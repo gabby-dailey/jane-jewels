@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jane Jewels — Creative Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#3f3b37;
+    --ink-soft:#6b6862;
+    --navy:#1c305a;
+    --navy-soft:#6b8199;
+    --mist:#f6f4f1;
+    --line:#e1e1e1;
+    --ticker-bg:#1f1c19;
+    --ticker-fg:#f7f5f2;
+    --serif:"New York","Iowan Old Style","Apple Garamond",Baskerville,"Times New Roman","Droid Serif",Times,"Source Serif Pro",serif;
+    --sans:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181d;
+      --ink:#e9e6e1;
+      --ink-soft:#a9a49c;
+      --navy:#9db3d9;
+      --navy-soft:#5c728f;
+      --mist:#1c2027;
+      --line:#2b2f36;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15181d;
+    --ink:#e9e6e1;
+    --ink-soft:#a9a49c;
+    --navy:#9db3d9;
+    --navy-soft:#5c728f;
+    --mist:#1c2027;
+    --line:#2b2f36;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important; transition:none !important;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--navy);}
+  img{max-width:100%; display:block;}
+
+  .measure{
+    max-width:700px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---- nav ---- */
+  .topnav{
+    position:sticky; top:0; z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:1080px; margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    flex-wrap:wrap;
+  }
+  .brandmark img{ height:24px; width:auto; }
+  .navlinks{ display:flex; gap:22px; flex-wrap:wrap; }
+  .navlinks a{
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.09em;
+    text-decoration:none; color:var(--ink-soft);
+  }
+  .navlinks a:hover{ color:var(--navy); }
+
+  /* ---- full-bleed hero ---- */
+  .hero{
+    position:relative;
+    min-height:82vh;
+    display:flex; align-items:flex-end;
+    background:#111 center 30% / cover no-repeat;
+    color:#f9f8f6;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,12,16,0.05) 0%, rgba(10,12,16,0.15) 45%, rgba(10,12,16,0.72) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:1;
+    max-width:1080px; margin:0 auto; padding:0 28px 60px;
+    width:100%;
+  }
+  .hero .eyebrow{ color:#e7e0d3; }
+  h1.hero-title{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(36px,6.2vw,64px);
+    line-height:1.05; margin:0 0 18px; text-wrap:balance;
+    max-width:760px;
+  }
+  .hero-sub{ font-size:18px; max-width:480px; color:#e9e4da; margin:0 0 34px; }
+  .hero-meta{
+    display:flex; gap:44px; flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,0.28); padding-top:18px;
+  }
+  .hero-meta div{ font-size:13px; }
+  .hero-meta span{ display:block; text-transform:uppercase; letter-spacing:0.08em; font-size:11px; color:#c8c1b3; margin-bottom:4px; }
+
+  .eyebrow{
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.14em;
+    color:var(--navy-soft); margin:0 0 16px;
+  }
+
+  /* ---- ticker ---- */
+  .ticker{
+    background:var(--ticker-bg); color:var(--ticker-fg);
+    overflow:hidden; white-space:nowrap; padding:14px 0;
+  }
+  .ticker-track{
+    display:inline-flex; gap:0; animation:ticker 26s linear infinite;
+  }
+  .ticker-track span{
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.14em;
+    padding:0 22px; border-right:1px solid rgba(247,245,242,0.3);
+  }
+  @keyframes ticker{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---- section scaffolding ---- */
+  section{ padding:88px 0; }
+  section + section{ border-top:1px solid var(--line); }
+  .sec-head{ margin-bottom:44px; }
+  .sec-num{
+    font-family:var(--serif); font-size:14px; color:var(--navy-soft);
+    letter-spacing:0.06em; margin:0 0 10px;
+  }
+  h2{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(28px,4vw,38px); margin:0; text-wrap:balance;
+    line-height:1.15;
+  }
+  h3{
+    font-family:var(--serif); font-weight:400; font-size:23px;
+    margin:40px 0 14px; text-wrap:balance;
+  }
+  p{ margin:0 0 18px; }
+  p.lede{ font-size:19px; color:var(--ink-soft); }
+
+  blockquote{
+    font-family:var(--serif); font-style:italic; font-size:22px;
+    line-height:1.5; color:var(--ink); margin:36px 0; padding-left:24px;
+    border-left:2px solid var(--navy); text-wrap:balance;
+  }
+  blockquote cite{
+    display:block; font-family:var(--sans); font-style:normal;
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ink-soft); margin-top:12px;
+  }
+
+  .drives{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+    background:var(--line); margin:36px 0; border:1px solid var(--line);
+  }
+  .drives div{ background:var(--paper); padding:18px 14px; }
+  .drives h4{ font-family:var(--serif); font-size:15px; margin:0 0 6px; color:var(--navy); }
+  .drives p{ font-size:13px; margin:0; color:var(--ink-soft); line-height:1.5; }
+  @media (max-width:640px){ .drives{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---- stats ---- */
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:36px;
+    margin:44px 0; padding:36px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .stat-num{
+    font-family:var(--serif); font-size:clamp(34px,5vw,46px);
+    color:var(--navy); font-variant-numeric:tabular-nums; line-height:1;
+    margin-bottom:8px;
+  }
+  .stat-label{ font-size:13.5px; color:var(--ink-soft); line-height:1.4; }
+  @media (max-width:640px){ .stat-row{ grid-template-columns:1fr; gap:28px; } }
+  .stat-source{ font-size:12px; color:var(--ink-soft); margin-top:-6px; }
+
+  .caveat{ background:var(--mist); padding:22px 26px; margin:32px 0; font-size:15px; color:var(--ink-soft); }
+  .caveat strong{ color:var(--ink); }
+
+  /* ---- eye mark divider ---- */
+  .mark-divider{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    padding:64px 0; color:var(--ink-soft);
+  }
+  .mark-divider svg{ width:46px; height:auto; color:var(--ink); }
+  .mark-divider .mark-label{
+    font-family:var(--serif); font-size:14px; letter-spacing:0.32em; text-transform:lowercase;
+  }
+
+  /* ---- idea blocks ---- */
+  .idea-tag{
+    display:inline-block; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--navy); border:1px solid var(--navy);
+    padding:4px 10px; margin-bottom:18px;
+  }
+  .idea-visual{
+    margin:8px 0 36px; overflow:hidden;
+  }
+  .idea-visual img{ width:100%; height:auto; object-position:center 30%; }
+  .idea-visual figcaption{
+    font-size:12.5px; color:var(--ink-soft); margin-top:10px;
+  }
+
+  .beatmap{
+    display:grid; grid-template-columns:80px 1fr; gap:0;
+    margin:28px 0; border-top:1px solid var(--line);
+  }
+  .beatmap-row{ display:contents; }
+  .beatmap-time, .beatmap-desc{ padding:16px 0 16px 4px; border-bottom:1px solid var(--line); }
+  .beatmap-time{ font-family:var(--serif); color:var(--navy-soft); font-size:15px; padding-right:16px; }
+  .beatmap-desc{ font-size:15px; padding-left:16px; }
+  .beatmap-desc strong{ color:var(--ink); }
+
+  .vo-script{ margin:32px 0; padding:28px 30px; background:var(--mist); }
+  .vo-script p{ font-family:var(--serif); font-style:italic; font-size:20px; margin:0 0 14px; line-height:1.5; }
+  .vo-script p:last-child{ margin-bottom:0; }
+
+  .tagline-block{
+    text-align:center; margin:52px 0; padding:44px 0;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .tagline-block .eyebrow{ text-align:center; }
+  .tagline{ font-family:var(--serif); font-size:clamp(26px,4vw,36px); margin:0; text-wrap:balance; }
+
+  .video-ref{ margin:40px 0; }
+  .video-frame{ position:relative; width:100%; aspect-ratio:16/9; background:var(--mist); overflow:hidden; }
+  .video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .video-caption{ font-size:13.5px; color:var(--ink-soft); margin-top:12px; }
+
+  .lineage{ font-size:14px; color:var(--ink-soft); margin-top:28px; border-left:2px solid var(--line); padding-left:16px; }
+  .lineage strong{ color:var(--ink); }
+
+  footer{ padding:56px 28px 80px; text-align:center; color:var(--ink-soft); font-size:13px; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brandmark">
+      <img src="https://janejewels.com/cdn/shop/files/LOGO-Horozontal-01.png?v=1717193224&width=300" alt="Jane">
+    </div>
+    <div class="navlinks">
+      <a href="#foundation">Foundation</a>
+      <a href="#data">The Data</a>
+      <a href="#strategy">The Strategy</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero" style="background-image:url('https://janejewels.com/cdn/shop/files/Jane_f22291e1-1c01-4a77-b752-40de382ee426.png?v=1786193066&width=2400');">
+  <div class="hero-content">
+    <p class="eyebrow">Creative Strategy &amp; Investment Plan</p>
+    <h1 class="hero-title">Making the sparkle impossible to scroll past.</h1>
+    <p class="hero-sub">A grounded plan for what we make next, why the algorithm rewards it, and what it costs to build.</p>
+    <div class="hero-meta">
+      <div><span>Prepared</span>August 13, 2026</div>
+      <div><span>For</span>Sarah, Ellie &amp; Noah</div>
+      <div><span>Covering</span>Q4 Creative Push</div>
+    </div>
+  </div>
+</div>
+
+<section id="foundation">
+  <div class="measure">
+    <div class="sec-head">
+      <p class="sec-num">01</p>
+      <h2>The algorithm changed. Our approach has to change with it.</h2>
+    </div>
+
+    <p class="lede">Before we get into what we're building, it's worth being precise about why — because Meta's ad system doesn't work the way it did even eighteen months ago, and a lot of "creative best practice" hasn't caught up.</p>
+
+    <p>PPC strategist Sam Tomlinson's recent analysis of Meta's ad-serving stack lays out the shift clearly. Meta now runs on three layers working together: <strong>GEM</strong>, the prediction engine that ingests trillions of signals to forecast which ad produces which action, in near-real-time; <strong>Lattice</strong>, which consolidates every ad ever run into one searchable library so Meta can compare performance across objectives; and <strong>Andromeda</strong>, which acts as a personal ads concierge — filtering billions of ads down to the handful that fit an individual's taste and behavior.</p>
+
+    <h3>The "same ad" problem</h3>
+    <p>Here's the part that should change how we plan creative: Andromeda doesn't judge an ad as new or different based on the copy, the offer, or the CTA. It judges "sameness" almost entirely on the visual — for a static or carousel, the aesthetic; for a video, the first three seconds. Tomlinson's framing is blunt about it:</p>
+
+    <blockquote>"Different copy/CTA on same visual = same ad."<cite>Sam Tomlinson, Creative in the Age of Andromeda</cite></blockquote>
+
+    <p>In practice: the same creator, in the same setting, with three different headlines, reads to Meta as one ad wearing three outfits — not three ads. Swapping a CTA button color or testing new ad copy on an old visual isn't real creative testing anymore. It's the same input, and Meta will hand back the same result.</p>
+
+    <p>That's also the likely explanation for something we've already seen in this account: the original Comfort Studs ad held a healthy, stable frequency and still lost half its click-through rate by week 15. It wasn't overexposed — it just stopped being visually new to the system, long before it stopped being new to us.</p>
+
+    <h3>What actually counts as different</h3>
+    <p>The fix isn't more ads — it's fewer, more deliberately distinct ones. Tomlinson's recommendation is to spend roughly <strong>80% of creative effort on the hook</strong> — the first three seconds of a video, or the entire first impression of a static — because that's the window Andromeda weighs most heavily when it decides whether something is worth serving to someone new. Everything after that hook has some flexibility. The hook has almost none.</p>
+
+    <p>His broader framework replaces "make more variants of the winner" with what he calls a <strong>Structural Iteration Matrix</strong> — breaking an ad into its real components (who it's for, the concept, the hook, the setting, the type of proof, the brand cues) and deliberately recombining them, rather than nudging the same combination slightly. Tied to that is a <strong>"Worlds" framework</strong>: building a small number of repeatable, distinct visual environments — a setting, a lighting style, a cast, a palette — the way a sitcom reuses its apartment set. Different personas get different worlds. The same face, in the same room, is not a new world no matter what the caption says.</p>
+
+    <h3>Five human drives</h3>
+    <p>Underneath the algorithmic mechanics, Tomlinson's argument is almost old-fashioned: winning creative still has to hit a real, timeless motivator. He names five.</p>
+
+    <div class="drives">
+      <div><h4>Survival</h4><p>Fear turned into agency — a clear problem and a clear way out.</p></div>
+      <div><h4>Admiration</h4><p>Status signaled through belonging, not through boasting.</p></div>
+      <div><h4>Success</h4><p>Visible, measurable transformation.</p></div>
+      <div><h4>Love</h4><p>Authentic connection and belonging.</p></div>
+      <div><h4>Protection</h4><p>Conviction in defending what your tribe values.</p></div>
+    </div>
+
+    <p>The conclusion he lands on is the one we're building this plan around: the era of driving performance by uploading small step-changes to a winning ad is over. Genuine visual diversity, built around a real persona and a real human motivator, is what the system rewards now — and, not coincidentally, it's also just better advertising.</p>
+  </div>
+</section>
+
+<section id="data">
+  <div class="measure">
+    <div class="sec-head">
+      <p class="sec-num">02</p>
+      <h2>What we know about video vs. static on Meta</h2>
+    </div>
+
+    <p class="lede">Two things are true at once here: video has real, structural advantages on this platform — and the reason it wins tracks exactly with the hook-first logic above, not a generic "video is more engaging" argument.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">60%+</div>
+        <div class="stat-label">of time spent on Facebook and Instagram is now spent watching video — Reels, longer-form, and livestreams combined.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~20–30%</div>
+        <div class="stat-label">typical CTR lift for video over static across e-commerce advertisers, widest for product-demo and brand-awareness placements.</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">–28–38%</div>
+        <div class="stat-label">lower CPM for static in cold prospecting — the tradeoff: static is cheaper to test with, video wins once it's found its audience.</div>
+      </div>
+    </div>
+    <p class="stat-source">Sources: Meta platform usage disclosures; aggregated industry benchmarks across e-commerce advertisers (directional, not account-specific — see note below).</p>
+
+    <div class="caveat">
+      <strong>Being straight about this data:</strong> the middle and right-hand figures are industry-wide benchmarks aggregated across many advertisers, not a single controlled study — treat them as a directional case for testing more video, not a promise of what Jane Jewels will see. Once we have your account's own video-vs-static breakdown, we'll replace the benchmark with your actual numbers.
+    </div>
+
+    <p>The more useful way to read the video advantage isn't "video is more engaging" in the abstract — it's that video gives Andromeda more surface area to judge a hook on. A static image is one frame; a video's first three seconds can move, reveal, and build — which is exactly the window the algorithm weighs most. That's the throughline from Section 01 to everything in Section 03: we're not choosing video because video is trendy, we're choosing it because it gives the hook more to work with in the window that actually decides distribution.</p>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span>
+    <span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span><span>BEAUTY IS WITHIN</span>
+  </div>
+</div>
+
+<section id="strategy">
+  <div class="measure">
+    <div class="sec-head">
+      <p class="sec-num">03</p>
+      <h2>The ideas</h2>
+      <p class="lede">Starting with the one furthest along.</p>
+    </div>
+
+    <span class="idea-tag">Idea 01 — Comfort Studs</span>
+    <h3>"Not Afraid of Your Jewelry"</h3>
+
+    <figure class="idea-visual">
+      <img src="https://janejewels.com/cdn/shop/files/angle1_ER_4s_f9f9f9.jpg?v=1783088934&width=1400" alt="Jane Everyday Comfort Studs, current product photography">
+      <figcaption>Current Comfort Studs photography — the ear-centered framing below is built from this same instinct: get close enough that the stone does the talking.</figcaption>
+    </figure>
+
+    <p>Women buy real luxury — jewelry, handbags, watches — and then don't wear it, because they're afraid of losing it or damaging it. It sits in a drawer being beautiful for no one. Comfort Studs remove that fear entirely: they look and feel like the real thing, at a price where losing one earring is an inconvenience, not a tragedy.</p>
+
+    <p>This builds directly on the yoga-studio direction from our last working session — same product, same emotional territory — with a specific opening and a voiceover built for it.</p>
+
+    <div class="beatmap">
+      <div class="beatmap-row">
+        <div class="beatmap-time">0–2s</div>
+        <div class="beatmap-desc">Wide shot. A woman seated, legs crossed, eyes closed, wrists resting naturally on her knees. Still, unhurried.</div>
+      </div>
+      <div class="beatmap-row">
+        <div class="beatmap-time">2s</div>
+        <div class="beatmap-desc">Cut to profile — <strong>shoulder to crown, ear centered in frame.</strong> This is the sparkle beat: the stud catches light exactly as the cut lands.</div>
+      </div>
+      <div class="beatmap-row">
+        <div class="beatmap-time">2–15s</div>
+        <div class="beatmap-desc">Hold on the profile. Voiceover begins with the cut and carries the rest of the runtime.</div>
+      </div>
+    </div>
+
+    <h3>Voiceover</h3>
+    <p>Chic, low, declarative — closer to spoken word than a soft affirmation-app read. Short lines, real silence between them.</p>
+    <div class="vo-script">
+      <p>"I don't perform for anyone. I adorn myself."</p>
+      <p>"This isn't for special occasions. Every day is the occasion."</p>
+      <p>"I am not delicate. I am deliberate."</p>
+      <p>"Comfort isn't the absence of luxury. It's the mastery of it."</p>
+    </div>
+
+    <div class="tagline-block">
+      <p class="eyebrow">The line</p>
+      <p class="tagline">Not Afraid of Your Jewelry.</p>
+    </div>
+
+    <h3>Vocal reference</h3>
+    <p>For tone and delivery only — not a script source. Naomi Campbell's spoken-word verse below is the register we're writing toward: unhurried, a little imperious, entirely unbothered.</p>
+    <div class="video-ref">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/ukTm71Id0uE?start=157&rel=0" title="Vocal delivery reference" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Cued to 2:37, where the spoken verse begins.</p>
+    </div>
+
+    <div class="lineage">
+      <strong>Why this earns its place:</strong> it sits squarely in the brand-storyline half of the two-bucket model from our last session — pure feeling, no feature list — while the ear-centered close-up gives it one real value-differentiator beat without breaking the calm of the shot. Runtime is 15 seconds by design: this is a brand-affinity asset, not a short-hook prospecting ad, and it isn't held to the same completion-rate math as those.
+    </div>
+  </div>
+</section>
+
+<div class="mark-divider">
+  <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 20C2 20 15 4 32 4C49 4 62 20 62 20C62 20 49 36 32 36C15 36 2 20 2 20Z" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="32" cy="20" r="7" stroke="currentColor" stroke-width="1.4"/>
+    <circle cx="32" cy="20" r="2.4" fill="currentColor"/>
+    <path d="M14 9L9 3M22 5L19 -1M42 5L45 -1M50 9L55 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" transform="translate(0,6)"/>
+  </svg>
+  <span class="mark-label">j · a · n · e</span>
+</div>
+
+<footer>
+  More ideas and the investment breakdown follow — this deck is being built live.
+</footer>
+
+</body>
+</html>
