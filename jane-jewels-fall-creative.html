@@ -96,6 +96,7 @@
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none;
   }
   .compare .slide.active{ display:block; }
+  .compare .slide.letterbox{ object-fit:contain; background:#fff; }
   .compare-label{
     position:absolute; top:10px; left:10px; z-index:2;
     background:rgba(20,20,20,0.62); color:#fff; font-size:10.5px;
@@ -266,8 +267,8 @@
         <div class="compare">
           <span class="compare-label">Our Version A</span>
           <img class="slide" src="static-4-ours-a.jpg" data-label="Our Version A" alt="Static 4, our AI-generated version A">
-          <img class="slide" src="static-4-ours-b.jpg" data-label="Our Version B" alt="Static 4, our AI-generated version B">
-          <img class="slide" src="static-4-ours-c.jpg" data-label="Our Version C" alt="Static 4, our AI-generated version C">
+          <img class="slide letterbox" src="static-4-ours-b.jpg" data-label="Our Version B" alt="Static 4, our AI-generated version B">
+          <img class="slide letterbox" src="static-4-ours-c.jpg" data-label="Our Version C" alt="Static 4, our AI-generated version C">
           <img class="slide" src="static-4-ref.jpg" data-label="Client Reference" alt="Static 4, client reference image">
           <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
           <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
