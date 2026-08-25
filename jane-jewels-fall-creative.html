@@ -97,6 +97,8 @@
   }
   .compare .slide.active{ display:block; }
   .compare .slide.letterbox{ object-fit:contain; background:#fff; }
+  .compare.wide{ aspect-ratio:3/2; border:1px solid var(--line); margin:28px 0 8px; }
+  .compare.wide .slide{ object-fit:contain; }
   .compare-label{
     position:absolute; top:10px; left:10px; z-index:2;
     background:rgba(20,20,20,0.62); color:#fff; font-size:10.5px;
@@ -308,6 +310,27 @@
       <p class="sec-num">02</p>
       <h2>The video: "The World's Best Everyday Jewelry"</h2>
       <p class="lede">One continuous day, told through quick match-cut transitions that always resolve on her ear or face, so the Comfort Studs stay the visual anchor throughout.</p>
+    </div>
+
+    <h3>Wardrobe options</h3>
+    <div class="compare wide">
+      <span class="compare-label">Outfit 1</span>
+      <img class="slide" src="video-gallery-1.jpg" data-label="Outfit 1" alt="Video wardrobe reference, outfit 1">
+      <img class="slide" src="video-gallery-2.jpg" data-label="Outfit 2" alt="Video wardrobe reference, outfit 2">
+      <img class="slide" src="video-gallery-3.jpg" data-label="Outfit 3" alt="Video wardrobe reference, outfit 3">
+      <img class="slide" src="video-gallery-4.jpg" data-label="Outfit 4" alt="Video wardrobe reference, outfit 4">
+      <img class="slide" src="video-gallery-5.jpg" data-label="Outfit 5" alt="Video wardrobe reference, outfit 5">
+      <img class="slide" src="video-gallery-6.jpg" data-label="Outfit 6" alt="Video wardrobe reference, outfit 6">
+      <img class="slide" src="video-gallery-7.jpg" data-label="Outfit 7" alt="Video wardrobe reference, outfit 7">
+      <img class="slide" src="video-gallery-8.jpg" data-label="Outfit 8" alt="Video wardrobe reference, outfit 8">
+      <img class="slide" src="video-gallery-9.jpg" data-label="Outfit 9" alt="Video wardrobe reference, outfit 9">
+      <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
+      <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
+      <div class="compare-dots">
+        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
+        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
+        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
+      </div>
     </div>
 
     <h3>Beats</h3>
