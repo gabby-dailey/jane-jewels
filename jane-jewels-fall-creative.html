@@ -117,6 +117,7 @@
   .compare .slide.active{ display:block; }
   .compare .slide.letterbox{ object-fit:contain; background:#fff; }
   .compare.wide{ aspect-ratio:3/2; border:1px solid var(--line); margin:28px 0 8px; }
+  .compare.square{ aspect-ratio:1/1; }
   .compare.wide .slide{ object-fit:contain; }
   .compare-label{
     position:absolute; top:10px; left:10px; z-index:2;
@@ -275,6 +276,22 @@
 
       <div class="static-card">
         <div class="compare">
+          <img class="slide letterbox" src="static-5-a.jpg" alt="Static 5, investment jewelry version">
+          <img class="slide letterbox" src="static-5-b.jpg" alt="Static 5, This is Tuesday version">
+          <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
+          <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
+          <div class="compare-dots"><span class="compare-dot"></span><span class="compare-dot"></span></div>
+        </div>
+        <div class="static-card-body">
+          <span class="idea-tag">Static 04</span>
+          <p class="static-headline">"This is Tuesday"</p>
+          <p class="static-sub">Investment pieces you can actually wear every day.</p>
+          <span class="static-cta">Get Yours Now</span>
+        </div>
+      </div>
+
+      <div class="static-card">
+        <div class="compare square">
           <img class="slide letterbox" src="static-4-ours-b.jpg" data-label="Our Version B" alt="Static 4, our AI-generated version B">
           <img class="slide letterbox" src="static-4-ours-a.jpg" data-label="Our Version A" alt="Static 4, our AI-generated version A">
           <img class="slide letterbox" src="static-4-ours-c.jpg" data-label="Our Version C" alt="Static 4, our AI-generated version C">
@@ -284,26 +301,10 @@
           <div class="compare-dots"><span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span></div>
         </div>
         <div class="static-card-body">
-          <span class="idea-tag">Static 04</span>
+          <span class="idea-tag">Static 05</span>
           <p class="static-headline">"Advantage: Jane"</p>
           <p class="static-sub">No racket required.</p>
           <span class="static-cta">Shop Tennis Bracelets</span>
-        </div>
-      </div>
-
-      <div class="static-card">
-        <div class="compare">
-          <img class="slide letterbox" src="static-5-a.jpg" alt="Static 5, investment jewelry version">
-          <img class="slide letterbox" src="static-5-b.jpg" alt="Static 5, This is Tuesday version">
-          <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
-          <div class="compare-dots"><span class="compare-dot"></span><span class="compare-dot"></span></div>
-        </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 05</span>
-          <p class="static-headline">"This is Tuesday"</p>
-          <p class="static-sub">Investment pieces you can actually wear every day.</p>
-          <span class="static-cta">Get Yours Now</span>
         </div>
       </div>
     </div>
