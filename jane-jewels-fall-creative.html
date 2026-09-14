@@ -84,16 +84,25 @@
   h3{ font-family:var(--serif); font-weight:400; font-size:21px; margin:0 0 10px; text-wrap:balance; }
   p{ margin:0 0 16px; }
   p.lede{ font-size:18px; color:var(--ink-soft); }
-  #video .sec-head h2{ margin-bottom:10px; }
+  #context .sec-head h2, #video .sec-head h2{ margin-bottom:10px; }
 
-  .static-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:8px; }
-  .static-card{ border:1px solid var(--line); overflow:hidden; }
-  .static-card-body{ padding:26px 28px; }
-  .compare{
+  .fail-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:20px 0 8px; }
+  .fail-card{ border:1px solid var(--line); overflow:hidden; }
+  .fail-frame{
     position:relative; aspect-ratio:4/5; background:var(--mist);
-    border-bottom:1px solid var(--line); overflow:hidden;
+    overflow:hidden; cursor:zoom-in;
   }
-  .static-card .compare{ cursor:zoom-in; }
+  .fail-frame img{ width:100%; height:100%; object-fit:cover; }
+  .fail-frame.wide{ aspect-ratio:3/2; }
+  .fail-label{
+    padding:10px 14px; font-size:12.5px; color:var(--ink-soft);
+    border-top:1px solid var(--line);
+  }
+  .fail-label strong{ color:var(--ink); }
+  @media (min-width:640px){
+    .fail-grid.fail-grid-4{ grid-template-columns:repeat(4,1fr); }
+  }
+
   .lightbox{
     position:fixed; inset:0; background:rgba(10,10,10,0.92);
     display:none; align-items:center; justify-content:center;
@@ -111,60 +120,20 @@
     align-items:center; justify-content:center;
   }
   .lightbox-close:hover{ background:rgba(255,255,255,0.22); }
-  .compare .slide{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none;
-  }
-  .compare .slide.active{ display:block; }
-  .compare .slide.letterbox{ object-fit:contain; background:#fff; }
-  .compare.wide{ aspect-ratio:3/2; border:1px solid var(--line); margin:28px 0 8px; }
-  .compare.square{ aspect-ratio:1/1; }
-  .compare.wide .slide{ object-fit:contain; }
-  .compare-label{
-    position:absolute; top:10px; left:10px; z-index:2;
-    background:rgba(20,20,20,0.62); color:#fff; font-size:10.5px;
-    text-transform:uppercase; letter-spacing:0.07em; padding:4px 9px;
-  }
-  .compare-arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:34px; height:34px; border-radius:50%;
-    background:rgba(20,20,20,0.55); color:#fff; border:none;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer; font-size:18px; z-index:2; line-height:1; padding:0;
-  }
-  .compare-arrow:hover{ background:rgba(20,20,20,0.82); }
-  .compare-arrow.prev{ left:10px; }
-  .compare-arrow.next{ right:10px; }
-  .compare-dots{
-    position:absolute; bottom:10px; left:0; right:0; z-index:2;
-    display:flex; justify-content:center; gap:6px;
-  }
-  .compare-dot{ width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); }
-  .compare-dot.active{ background:#fff; }
-  .idea-tag{
+
+  .video-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:8px; }
+  .video-card{ border:1px solid var(--line); overflow:hidden; }
+  .video-card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; }
+  .video-card-body{ padding:18px 20px; }
+  .video-tag{
     display:inline-block; font-size:11px; text-transform:uppercase;
     letter-spacing:0.08em; color:var(--navy); border:1px solid var(--navy);
-    padding:4px 10px; margin-bottom:16px;
+    padding:4px 10px; margin-bottom:10px;
   }
-  .static-headline{
-    font-family:var(--serif); font-size:26px; line-height:1.25; color:var(--navy);
-    margin:0 0 12px; text-wrap:balance;
-  }
-  .static-sub{ font-size:15px; color:var(--ink); margin:0 0 18px; }
-  .static-cta{
-    display:inline-block; padding:10px 18px; border:1px solid var(--navy);
-    color:var(--navy); text-decoration:none; font-size:12.5px;
-    text-transform:uppercase; letter-spacing:0.07em;
-  }
+  .video-desc{ font-size:14.5px; color:var(--ink-soft); margin:0; }
   @media (min-width:760px){
-    .static-grid{ grid-template-columns:repeat(2,1fr); }
+    .video-grid{ grid-template-columns:repeat(2,1fr); }
   }
-
-  .beatmap{ display:grid; grid-template-columns:80px 1fr; gap:0; margin:24px 0; border-top:1px solid var(--line); }
-  .beatmap-row{ display:contents; }
-  .beatmap-time, .beatmap-desc{ padding:14px 0 14px 4px; border-bottom:1px solid var(--line); }
-  .beatmap-time{ font-family:var(--serif); color:var(--navy-soft); font-size:14px; padding-right:14px; }
-  .beatmap-desc{ font-size:14.5px; padding-left:14px; }
-  .beatmap-desc strong{ color:var(--ink); }
 
   .spec-list{ list-style:none; padding:0; margin:20px 0; font-size:14.5px; color:var(--ink-soft); }
   .spec-list li{ padding:8px 0; border-bottom:1px solid var(--line); }
@@ -205,7 +174,7 @@
       <img src="https://janejewels.com/cdn/shop/files/LOGO-Horozontal-01.png?v=1717193224&width=300" alt="Jane">
     </div>
     <div class="navlinks">
-      <a href="#statics">The Statics</a>
+      <a href="#context">Before You Watch</a>
       <a href="#video">The Video</a>
       <a href="#archive">Archive</a>
     </div>
@@ -214,89 +183,65 @@
 
 <div class="hero">
   <div class="measure">
-    <p class="eyebrow">Creative Direction, Phase 2</p>
-    <h1 class="hero-title">Fall '26 Ad Collection: Creative Direction Confirmed</h1>
-    <p class="hero-sub">Our goal: finalize ad copy, static images, and the persona for the video in order to move into full production.</p>
+    <p class="eyebrow">Creative Direction, Phase 3</p>
+    <h1 class="hero-title">Fall '26 AI Video: Ready for Review</h1>
+    <p class="hero-sub">Before you watch, a quick look at where the AI struggled during production, so you know what you're seeing and what's already been flagged, before asking for changes.</p>
     <div class="hero-meta">
-      <div><span>Presented on</span>August 25, 2026</div>
+      <div><span>Presented on</span>September 14, 2026</div>
       <div><span>For</span>Sarah, Ellie &amp; Noah</div>
       <div><span>Presented by</span>AdVenture Creative</div>
     </div>
   </div>
 </div>
 
-<section id="statics">
+<section id="context">
   <div class="measure">
     <div class="sec-head">
       <p class="sec-num">01</p>
-      <h2>The five statics</h2>
-      <p class="lede">A woman dressed for the occasion and in motion featuring Comfort Studs and the tennis necklace.</p>
+      <h2>Before you watch</h2>
+      <p class="lede">The video below is AI-generated, and it is still learning the finer points of a three-prong setting. Here is exactly where it struggled during production, so nothing below comes as a surprise.</p>
     </div>
 
-    <div class="static-grid">
-      <div class="static-card">
-        <div class="compare">
-          <img class="slide letterbox" src="static-2-final.jpg" alt="Static 2, final creative">
-        </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 01</span>
-          <p class="static-headline">Brand Awareness | Editorial</p>
-          <p class="static-sub">Jane Everyday Tennis Bracelet (7ct and 10ct, from $348) and Three-Prong Tennis Necklace (4ct and 10ct, from $398).</p>
-          <span class="static-cta">Shop Now</span>
-        </div>
+    <h3>Same generation, two different settings</h3>
+    <p>This still is from this morning's test on the newest image model. Look at the two ear close-ups: the bottom-left product shot renders a correct three-prong martini setting, but the bottom-right shot in the same generation renders a different mount entirely. The model understood the setting once and lost it once, in the same output.</p>
+    <div class="fail-card">
+      <div class="fail-frame wide">
+        <img src="ai-fail-prong-grid.jpg" alt="Single AI generation showing a correct three-prong setting in one panel and an incorrect mount in another panel of the same image">
       </div>
+      <div class="fail-label"><strong>GPT image 2.5,</strong> tested September 14, 2026</div>
+    </div>
 
-      <div class="static-card">
-        <div class="compare">
-          <img class="slide letterbox" src="static-5-a.jpg" alt="Static 5, investment jewelry version">
-          <img class="slide letterbox" src="static-5-b.jpg" alt="Static 5, This is Tuesday version">
-          <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
-          <div class="compare-dots"><span class="compare-dot"></span><span class="compare-dot"></span></div>
+    <h3>The earring, frame to frame</h3>
+    <p>Across different frames pulled during the video build, the same earring reference does not always hold its shape. The first frame below is correct: a clean, single round stone in a proper setting. The next three frames show it collapsing into an indistinct, textureless cluster instead.</p>
+    <div class="fail-grid fail-grid-4">
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-ref.jpg" alt="Correct AI-generated earring, a clean single round stone stud">
         </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 02</span>
-          <p class="static-headline">"This is Tuesday"</p>
-          <p class="static-sub">Investment pieces you can actually wear every day.</p>
-          <span class="static-cta">Find Yours Today</span>
-        </div>
+        <div class="fail-label"><strong>Correct</strong></div>
       </div>
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-b.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape">
+        </div>
+        <div class="fail-label"><strong>Drifted</strong></div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-c.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape from another angle">
+        </div>
+        <div class="fail-label"><strong>Drifted</strong></div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-d.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape in close-up">
+        </div>
+        <div class="fail-label"><strong>Drifted</strong></div>
+      </div>
+    </div>
 
-      <div class="static-card">
-        <div class="compare">
-          <img class="slide" src="static-3-final.jpg" alt="Static 3, final creative">
-        </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 03</span>
-          <p class="static-headline">Not Just for Special Occasions</p>
-          <p class="static-sub">Luxury jewelry you're not afraid to wear every day.</p>
-          <span class="static-cta">Shop Now</span>
-        </div>
-      </div>
-
-      <div class="static-card">
-        <div class="compare">
-          <img class="slide letterbox" src="static-1-final.jpg" alt="Static 1, final creative">
-        </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 04</span>
-          <p class="static-headline">Jewelry That Shifts from Meetings to Meeting the Girls</p>
-          <p class="static-sub">Jane Everyday Tennis Bracelet and Three-Prong Tennis Necklace, 10 carats each, starting at $348.</p>
-          <span class="static-cta">Shop Now</span>
-        </div>
-      </div>
-
-      <div class="static-card">
-        <div class="compare square">
-          <img class="slide" src="static-5-final.jpg" alt="Static 5, final tennis creative">
-        </div>
-        <div class="static-card-body">
-          <span class="idea-tag">Static 05</span>
-          <p class="static-headline">"Advantage: Jane"</p>
-          <p class="static-sub">No racket required.</p>
-          <span class="static-cta">Shop Tennis Bracelets</span>
-        </div>
-      </div>
+    <div class="callout">
+      <strong>Why we're showing you this:</strong> the jewelry is the entire point of this campaign, so it is the one detail we scrutinized hardest through production. Every frame like the ones above was caught and corrected before the final cut. Click any image to see it larger.
     </div>
   </div>
 </section>
@@ -305,59 +250,30 @@
   <div class="measure">
     <div class="sec-head">
       <p class="sec-num">02</p>
-      <h2>The video: "The World's Best Everyday Jewelry"</h2>
-      <p class="lede">Reworked to match Ellie's own pitch from the call: real, overlooked moments pulled from the same morning routine across several different days, so the jewelry, not the outfit, is the one constant. The wardrobe changes cut together the way Andy's city-walk transformation does in The Devil Wears Prada: quick, seamless, and never the point of the shot.</p>
+      <h2>The video: "Made for everyday moments, Jane"</h2>
+      <p class="lede">Two versions of the same finished spot, each with a different opening beat. Same cut, same ending, just a different way in. Let us know which one you want to run with.</p>
     </div>
 
-    <h3>Wardrobe options</h3>
-    <p>Each of the nine looks below is meant to be featured as a look for each different morning of the same routine. Cut together beat to beat, the outfit changes with every cut while the routine, and the jewelry, stays identical.</p>
-    <div class="compare wide">
-      <span class="compare-label">Outfit 1</span>
-      <img class="slide" src="video-gallery-7.jpg" data-label="Outfit 1" alt="Video wardrobe reference, outfit 1">
-      <img class="slide" src="video-gallery-3.jpg" data-label="Outfit 2" alt="Video wardrobe reference, outfit 2">
-      <img class="slide" src="video-gallery-4.jpg" data-label="Outfit 3" alt="Video wardrobe reference, outfit 3">
-      <img class="slide" src="video-gallery-2.jpg" data-label="Outfit 4" alt="Video wardrobe reference, outfit 4">
-      <img class="slide" src="video-gallery-5.jpg" data-label="Outfit 5" alt="Video wardrobe reference, outfit 5">
-      <img class="slide" src="video-gallery-9.jpg" data-label="Outfit 6" alt="Video wardrobe reference, outfit 6">
-      <img class="slide" src="video-gallery-6.jpg" data-label="Outfit 7" alt="Video wardrobe reference, outfit 7">
-      <img class="slide" src="video-gallery-8.jpg" data-label="Outfit 8" alt="Video wardrobe reference, outfit 8">
-      <img class="slide" src="video-gallery-1.jpg" data-label="Outfit 9" alt="Video wardrobe reference, outfit 9">
-      <button class="compare-arrow prev" aria-label="Previous image">&#8249;</button>
-      <button class="compare-arrow next" aria-label="Next image">&#8250;</button>
-      <div class="compare-dots">
-        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
-        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
-        <span class="compare-dot"></span><span class="compare-dot"></span><span class="compare-dot"></span>
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls playsinline preload="metadata" src="jane-jewels-video-shoes.mp4"></video>
+        <div class="video-card-body">
+          <span class="video-tag">Version A</span>
+          <p class="video-desc">Opens on shoes.</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata" src="jane-jewels-video-earrings.mp4"></video>
+        <div class="video-card-body">
+          <span class="video-tag">Version B</span>
+          <p class="video-desc">Opens on earrings.</p>
+        </div>
       </div>
     </div>
-
-    <h3>Beats</h3>
-    <p>Each cut below carries her into a new outfit and a new day, edited seamlessly, the same trick as the wardrobe-change montage in The Devil Wears Prada.</p>
-    <div class="beatmap">
-      <div class="beatmap-row">
-        <div class="beatmap-time">Beat 1</div>
-        <div class="beatmap-desc">She stops at the mirror to put in her Comfort Studs. The first calm beat of the video, and the first clear shot of the jewelry.</div>
-      </div>
-      <div class="beatmap-row">
-        <div class="beatmap-time">Beat 2</div>
-        <div class="beatmap-desc">Down into the subway, foot tapping on the platform. A second calm beat lands on the earring while everything else keeps moving.</div>
-      </div>
-      <div class="beatmap-row">
-        <div class="beatmap-time">Beat 3</div>
-        <div class="beatmap-desc">In line for coffee, same restless energy. Another quiet beat on the jewelry before she's back in motion.</div>
-      </div>
-      <div class="beatmap-row">
-        <div class="beatmap-time">Beat 4</div>
-        <div class="beatmap-desc">She catches her reflection, or her phone, once more before walking into the meeting. Same earrings, same routine, new day.</div>
-      </div>
-    </div>
-
-    <h3>Closing line</h3>
-    <p>"Made for everyday moments, Jane," exactly as Ellie described it on the call.</p>
 
     <ul class="spec-list">
-      <li><strong>Runtime:</strong> approximately 20 seconds, with an optional 10-second cutdown</li>
-      <li><strong>Formats:</strong> vertical and square, delivered as 1080p MP4</li>
+      <li><strong>Runtime:</strong> 26 seconds</li>
+      <li><strong>Format:</strong> vertical, 1080x1920, delivered as MP4</li>
       <li><strong>Revisions:</strong> up to two rounds per the signed agreement</li>
     </ul>
   </div>
@@ -369,6 +285,14 @@
     <h2>Archive</h2>
     <p class="lede">Earlier versions of this deck, kept for reference. Nothing here is current, everything here is searchable.</p>
     <div class="archive-gallery">
+      <a class="archive-item" href="jane-jewels-fall-statics-and-concept.html">
+        <div class="archive-item-left">
+          <span class="archive-date">August 25, 2026</span>
+          <span class="archive-title">Five Statics, Wardrobe Gallery &amp; Video Concept</span>
+          <span class="archive-desc">The five finalized statics, the wardrobe reference gallery for the shoot, and the approved video concept before final production</span>
+        </div>
+        <span class="archive-arrow">View &rarr;</span>
+      </a>
       <a class="archive-item" href="jane-jewels-creative-strategy.html">
         <div class="archive-item-left">
           <span class="archive-date">August 13, 2026</span>
@@ -387,32 +311,13 @@
 </div>
 
 <script>
-document.querySelectorAll('.compare').forEach(function(compare){
-  var slides = compare.querySelectorAll('.slide');
-  var dots = compare.querySelectorAll('.compare-dot');
-  var label = compare.querySelector('.compare-label');
-  var idx = 0;
-  function show(i){
-    idx = (i + slides.length) % slides.length;
-    slides.forEach(function(s, n){ s.classList.toggle('active', n === idx); });
-    dots.forEach(function(d, n){ d.classList.toggle('active', n === idx); });
-    if (label) label.textContent = slides[idx].getAttribute('data-label') || '';
-  }
-  var prev = compare.querySelector('.compare-arrow.prev');
-  var next = compare.querySelector('.compare-arrow.next');
-  if (prev) prev.addEventListener('click', function(){ show(idx - 1); });
-  if (next) next.addEventListener('click', function(){ show(idx + 1); });
-  show(0);
-});
-
 var lightbox = document.getElementById('lightbox');
 var lightboxImg = lightbox.querySelector('img');
-document.querySelectorAll('.static-card .compare').forEach(function(compare){
-  compare.addEventListener('click', function(e){
-    if (e.target.closest('.compare-arrow') || e.target.closest('.compare-dots')) return;
-    var active = compare.querySelector('.slide.active') || compare.querySelector('.slide');
-    lightboxImg.src = active.getAttribute('src');
-    lightboxImg.alt = active.getAttribute('alt') || '';
+document.querySelectorAll('.fail-frame').forEach(function(frame){
+  frame.addEventListener('click', function(){
+    var img = frame.querySelector('img');
+    lightboxImg.src = img.getAttribute('src');
+    lightboxImg.alt = img.getAttribute('alt') || '';
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
