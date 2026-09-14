@@ -81,7 +81,8 @@
   .sec-head{ margin-bottom:40px; }
   .sec-num{ font-family:var(--serif); font-size:14px; color:var(--navy-soft); margin:0 0 10px; }
   h2{ font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.6vw,34px); margin:0; text-wrap:balance; line-height:1.15; }
-  h3{ font-family:var(--serif); font-weight:400; font-size:21px; margin:0 0 10px; text-wrap:balance; }
+  h3{ font-family:var(--serif); font-weight:400; font-size:21px; margin:40px 0 10px; text-wrap:balance; }
+  .subhead-lg{ font-size:clamp(26px,3.6vw,34px); line-height:1.15; }
   p{ margin:0 0 16px; }
   p.lede{ font-size:18px; color:var(--ink-soft); }
   #context .sec-head h2, #video .sec-head h2{ margin-bottom:10px; }
@@ -139,8 +140,8 @@
   @media (min-width:760px){
     .video-grid{ grid-template-columns:repeat(2,1fr); }
   }
-  .wink-card{ max-width:640px; margin:20px 0 8px; }
-  .wink-card video{ aspect-ratio:16/9; max-height:60vh; }
+  .wink-card{ margin:20px 0 8px; }
+  .wink-card video{ aspect-ratio:16/9; max-height:70vh; width:100%; }
 
   .reveal{
     opacity:0; transform:translateY(18px);
@@ -272,13 +273,13 @@
     </div>
 
     <div class="callout">
-      <strong>Why we're showing you this:</strong> the jewelry is the entire point of this campaign, so it is the one detail we scrutinized hardest through production. Everything above is already logged for revision, nothing here is a surprise we're hoping you miss. Click any image to see it larger.
+      <strong>Why we're showing you this:</strong> as the jewelry is the focal point of this video ad, our team heavily scrutinized every frame throughout production. Click any image to see it larger.
     </div>
 
-    <h3>But don't worry, we got it</h3>
+    <h3 class="subhead-lg">But don't worry, we got it</h3>
     <p>An outtake from the same shoot that didn't make the final cut. Proof the model can land it perfectly when everything lines up.</p>
     <div class="video-card reveal wink-card">
-      <video controls playsinline preload="metadata" src="jane-jewels-wink-video.mp4"></video>
+      <video autoplay muted loop playsinline src="jane-jewels-wink-video.mp4"></video>
       <div class="video-card-body">
         <span class="video-tag">Unused footage</span>
         <p class="video-desc">Correct setting, correct stone, no drift.</p>
@@ -377,10 +378,7 @@ document.addEventListener('keydown', function(e){
 if ('IntersectionObserver' in window){
   var revealObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if (entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        revealObserver.unobserve(entry.target);
-      }
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
     });
   }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
