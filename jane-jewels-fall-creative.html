@@ -96,6 +96,7 @@
   .fail-frame img{ width:100%; height:100%; object-fit:cover; }
   .fail-frame.wide{ aspect-ratio:3/2; }
   .fail-frame.tall{ aspect-ratio:9/16; max-width:280px; margin:0 auto; }
+  .fail-frame.contain img{ object-fit:contain; background:#fff; }
   .fail-label{
     padding:10px 14px; font-size:12.5px; color:var(--ink-soft);
     border-top:1px solid var(--line);
@@ -283,6 +284,15 @@
         <span class="video-tag">Unused footage</span>
         <p class="video-desc">Correct setting, correct stone, no drift.</p>
       </div>
+    </div>
+
+    <h3>The master reference</h3>
+    <p>Every prompt was built around this: the exact earrings, composited onto each shot in Photoshop, because GPT Image 2.5 could not generate them correctly on its own.</p>
+    <div class="fail-card reveal">
+      <div class="fail-frame wide contain">
+        <img src="ai-master-earring-reference.jpg" alt="Master reference image of the exact earrings composited onto ear crops in Photoshop, used as the reference for every AI prompt">
+      </div>
+      <div class="fail-label"><strong>Master reference,</strong> composited in Photoshop</div>
     </div>
   </div>
 </section>
