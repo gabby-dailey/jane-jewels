@@ -85,22 +85,24 @@
   p{ margin:0 0 16px; }
   p.lede{ font-size:18px; color:var(--ink-soft); }
   #context .sec-head h2, #video .sec-head h2{ margin-bottom:10px; }
+  #context{ background:var(--mist); }
 
   .fail-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:20px 0 8px; }
-  .fail-card{ border:1px solid var(--line); overflow:hidden; }
+  .fail-card{ border:1px solid var(--line); overflow:hidden; background:var(--paper); }
   .fail-frame{
     position:relative; aspect-ratio:4/5; background:var(--mist);
     overflow:hidden; cursor:zoom-in;
   }
   .fail-frame img{ width:100%; height:100%; object-fit:cover; }
   .fail-frame.wide{ aspect-ratio:3/2; }
+  .fail-frame.tall{ aspect-ratio:9/16; max-width:280px; margin:0 auto; }
   .fail-label{
     padding:10px 14px; font-size:12.5px; color:var(--ink-soft);
     border-top:1px solid var(--line);
   }
   .fail-label strong{ color:var(--ink); }
   @media (min-width:640px){
-    .fail-grid.fail-grid-4{ grid-template-columns:repeat(4,1fr); }
+    .fail-grid.fail-grid-6{ grid-template-columns:repeat(3,1fr); }
   }
 
   .lightbox{
@@ -123,7 +125,10 @@
 
   .video-grid{ display:grid; grid-template-columns:1fr; gap:24px; margin-top:8px; }
   .video-card{ border:1px solid var(--line); overflow:hidden; }
-  .video-card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; }
+  .video-card video{
+    width:100%; display:block; margin:0 auto; background:#000;
+    aspect-ratio:9/16; max-height:70vh; object-fit:contain;
+  }
   .video-card-body{ padding:18px 20px; }
   .video-tag{
     display:inline-block; font-size:11px; text-transform:uppercase;
@@ -141,6 +146,7 @@
 
   .callout{ background:var(--mist); padding:18px 22px; margin:20px 0; font-size:14.5px; color:var(--ink-soft); }
   .callout strong{ color:var(--ink); }
+  #context .callout{ background:var(--paper); border:1px solid var(--line); }
 
   /* ---- archive footer ---- */
   .archive-footer{
@@ -212,36 +218,57 @@
     </div>
 
     <h3>The earring, frame to frame</h3>
-    <p>Across different frames pulled during the video build, the same earring reference does not always hold its shape. The first frame below is correct: a clean, single round stone in a proper setting. The next three frames show it collapsing into an indistinct, textureless cluster instead.</p>
-    <div class="fail-grid fail-grid-4">
+    <p>Across different frames pulled during the video build, the AI hallucinated the earring differently almost every time. None of the six frames below match the real product; the shape, cluster, and setting all drift from take to take.</p>
+    <div class="fail-grid fail-grid-6">
       <div class="fail-card">
         <div class="fail-frame">
-          <img src="ai-fail-earring-ref.jpg" alt="Correct AI-generated earring, a clean single round stone stud">
+          <img src="ai-fail-earring-ref.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
         </div>
-        <div class="fail-label"><strong>Correct</strong></div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
       </div>
       <div class="fail-card">
         <div class="fail-frame">
-          <img src="ai-fail-earring-b.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape">
+          <img src="ai-fail-earring-b.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
         </div>
-        <div class="fail-label"><strong>Drifted</strong></div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
       </div>
       <div class="fail-card">
         <div class="fail-frame">
-          <img src="ai-fail-earring-c.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape from another angle">
+          <img src="ai-fail-earring-c.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
         </div>
-        <div class="fail-label"><strong>Drifted</strong></div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
       </div>
       <div class="fail-card">
         <div class="fail-frame">
-          <img src="ai-fail-earring-d.jpg" alt="Incorrect AI-generated earring, a blurred cluster shape in close-up">
+          <img src="ai-fail-earring-d.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
         </div>
-        <div class="fail-label"><strong>Drifted</strong></div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-e.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
+        </div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
+      </div>
+      <div class="fail-card">
+        <div class="fail-frame">
+          <img src="ai-fail-earring-f.jpg" alt="Hallucinated AI-generated earring, an incorrect clustered shape">
+        </div>
+        <div class="fail-label"><strong>Hallucinated</strong></div>
       </div>
     </div>
 
+    <h3>Same drift, in the final cut</h3>
+    <p>This same hallucinated shape also appears in the delivered video below, around the 0:04 mark. We are flagging it here rather than hoping you miss it: it is already slated for the first revision round.</p>
+    <div class="fail-card">
+      <div class="fail-frame tall">
+        <img src="ai-fail-video-still.jpg" alt="Frame from the delivered video showing the same hallucinated earring shape, at approximately 0:04">
+      </div>
+      <div class="fail-label"><strong>Hallucinated,</strong> visible at approximately 0:04 in the video below</div>
+    </div>
+
     <div class="callout">
-      <strong>Why we're showing you this:</strong> the jewelry is the entire point of this campaign, so it is the one detail we scrutinized hardest through production. Every frame like the ones above was caught and corrected before the final cut. Click any image to see it larger.
+      <strong>Why we're showing you this:</strong> the jewelry is the entire point of this campaign, so it is the one detail we scrutinized hardest through production. Everything above is already logged for revision, nothing here is a surprise we're hoping you miss. Click any image to see it larger.
     </div>
   </div>
 </section>
