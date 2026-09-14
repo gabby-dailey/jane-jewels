@@ -81,8 +81,7 @@
   .sec-head{ margin-bottom:40px; }
   .sec-num{ font-family:var(--serif); font-size:14px; color:var(--navy-soft); margin:0 0 10px; }
   h2{ font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.6vw,34px); margin:0; text-wrap:balance; line-height:1.15; }
-  h3{ font-family:var(--serif); font-weight:400; font-size:21px; margin:40px 0 10px; text-wrap:balance; }
-  .subhead-lg{ font-size:clamp(26px,3.6vw,34px); line-height:1.15; }
+  h3{ font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.6vw,34px); line-height:1.15; margin:40px 0 10px; text-wrap:balance; }
   p{ margin:0 0 16px; }
   p.lede{ font-size:18px; color:var(--ink-soft); }
   #context .sec-head h2, #video .sec-head h2{ margin-bottom:10px; }
@@ -141,7 +140,7 @@
     .video-grid{ grid-template-columns:repeat(2,1fr); }
   }
   .wink-card{ margin:20px 0 8px; }
-  .wink-card video{ aspect-ratio:16/9; max-height:70vh; width:100%; }
+  .wink-card video{ aspect-ratio:16/9; max-height:70vh; width:100%; cursor:pointer; }
 
   .reveal{
     opacity:0; transform:translateY(18px);
@@ -276,7 +275,7 @@
       <strong>Why we're showing you this:</strong> as the jewelry is the focal point of this video ad, our team heavily scrutinized every frame throughout production. Click any image to see it larger.
     </div>
 
-    <h3 class="subhead-lg">But don't worry, we got it</h3>
+    <h3>But don't worry, we got it</h3>
     <p>An outtake from the same shoot that didn't make the final cut. Proof the model can land it perfectly when everything lines up.</p>
     <div class="video-card reveal wink-card">
       <video autoplay muted loop playsinline src="jane-jewels-wink-video.mp4"></video>
@@ -384,6 +383,13 @@ if ('IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
 } else {
   document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+}
+
+var winkVideo = document.querySelector('.wink-card video');
+if (winkVideo){
+  winkVideo.addEventListener('click', function(){
+    if (winkVideo.paused){ winkVideo.play(); } else { winkVideo.pause(); }
+  });
 }
 </script>
 
